@@ -1,0 +1,71 @@
+:host {
+  .mat-card {
+    margin-top: 8px;
+
+    ::ng-deep.mat-card-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 32px;
+
+      .mat-card-header-text {
+        display: none;
+      }
+
+      .right-side {
+        .mat-fab {
+          margin-left: 16px;
+        }
+      }
+    }
+
+    ::ng-deep .mat-card-content {
+      overflow: auto;
+    }
+
+    .table-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 24px;
+
+      .actions-container {
+        display: flex;
+        flex-direction: column;
+        min-width: 364px;
+        margin-left: 24px;
+
+        .buttons-row {
+          display: flex;
+          justify-content: flex-end;
+
+          .mat-fab {
+            margin-left: 16px;
+          }
+        }
+      }
+    }
+
+    .mat-table {
+      border: 1px solid rgba(0,0,0,.12);
+      border-bottom: none;
+      border-right: none;
+
+      .mat-header-cell {
+        font-weight: bold;
+        text-align: center;
+        border-right: 1px solid rgba(0,0,0,.12);
+        padding: 0 8px;
+      }
+
+      .mat-cell {
+        border-right: 1px solid rgba(0,0,0,.12);
+        text-align: end;
+        padding: 0 8px;
+
+        .action-icon {
+          font-size: 18px;
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+}

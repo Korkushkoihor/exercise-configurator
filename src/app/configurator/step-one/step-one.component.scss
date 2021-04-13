@@ -1,0 +1,15 @@
+:host {
+  .mat-card {
+    margin-top: 8px;
+    font-size: 22px;
+  }
+
+  mat-slider {
+    width: 300px;
+  }
+
+  .buttons-row {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

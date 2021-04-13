@@ -1,0 +1,15 @@
+<mat-horizontal-stepper (selectionChange)="changedStep($event.selectedIndex)" #stepper>
+  <mat-step label="Введіть будь ласка конфігурацію">
+    <app-step-one
+      (submitted)="submittedStepOne()"
+      #stepOneComponent>
+    </app-step-one>
+  </mat-step>
+  <mat-step label="Завантажте отриманий результат">
+    <app-step-two
+      (pressedBack)="pressedBackStepTwo()"
+      [config]="stepOneConfig"
+      #stepTwoComponent>
+    </app-step-two>
+  </mat-step>
+</mat-horizontal-stepper>

@@ -1,0 +1,81 @@
+<mat-card>
+  <mat-card-header>
+    <div class="left-side">
+      <button (click)="backButton()" mat-fab color="primary" aria-label="Назад">
+        <mat-icon>undo</mat-icon>
+      </button>
+    </div>
+    <div class="right-side">
+      <button (click)="init()" mat-fab color="primary" aria-label="Перегенерувати">
+        <mat-icon>refresh</mat-icon>
+      </button>
+<!--      <button mat-fab color="primary" aria-label="Надрукувати">-->
+<!--        <mat-icon>print</mat-icon>-->
+<!--      </button>-->
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" #studentTable>
+        <!-- Position Column -->
+        <ng-container *ngFor="let col of displayedColumns">
+          <ng-container matColumnDef="{{col}}">
+            <th width="{{config.maxNumbers * 14}}px" mat-header-cell *matHeaderCellDef> {{col}} </th>
+            <td width="{{config.maxNumbers * 14}}px" mat-cell *matCellDef="let element; let i = index;">
+              <span style="font-size: 24px" class="action-icon" [style.color]="element[col]?.neededAction === '+' ? 'green' : 'red'">{{element[col]?.neededAction}}</span>
+              {{ element[col]?.actionValue}}
+          </ng-container>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <div class="actions-container">
+        <h2>Таблиця для учнів - без результатів</h2>
+
+        <div class="buttons-row">
+          <button (click)="downloadImage(false)" mat-fab color="primary" aria-label="Скачати Фотографію">
+            <mat-icon>image</mat-icon>
+          </button>
+
+<!--          <button (click)="printTable(false)" mat-fab color="primary" aria-label="Роздрукувати">-->
+<!--            <mat-icon>print</mat-icon>-->
+<!--          </button>-->
+        </div>
+      </div>
+    </div>
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" #teacherTable>
+        <!-- Position Column -->
+        <ng-container *ngFor="let col of displayedColumns">
+          <ng-container matColumnDef="{{col}}">
+            <th width="{{config.maxNumbers * 14}}px" mat-header-cell *matHeaderCellDef> {{col}} </th>
+            <td width="{{config.maxNumbers * 14}}px" mat-cell *matCellDef="let element; let i = index;">
+              <span class="action-icon" [style.color]="element[col]?.neededAction === '+' ? 'green' : 'red'">{{element[col]?.neededAction}}</span>
+              {{ element[col]?.actionValue}}
+              <br/>
+              <span style="color: green">{{i !== 0 ? element[col]?.calculatedValue : ''}}</span></td>
+          </ng-container>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <div class="actions-container">
+        <h2>Таблиця для вчителя - з результатами</h2>
+
+        <div class="buttons-row">
+          <button (click)="downloadImage(true)" mat-fab color="primary" aria-label="Скачати Фотографію">
+            <mat-icon>image</mat-icon>
+          </button>
+
+<!--          <button (click)="printTable(true)" mat-fab color="primary" aria-label="Роздрукувати">-->
+<!--            <mat-icon>print</mat-icon>-->
+<!--          </button>-->
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

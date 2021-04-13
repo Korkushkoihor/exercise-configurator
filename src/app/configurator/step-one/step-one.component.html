@@ -1,0 +1,45 @@
+<mat-card>
+  <form [formGroup]="configureGroup" (submit)="submitGroup()">
+    <div class="one-control">
+      <mat-label>Виберіть максимально допустиму кількість цифр</mat-label>
+      <mat-slider
+        formControlName="maxNumbers"
+        [thumbLabel]="true"
+        min="1"
+        max="16"
+        step="1">
+      </mat-slider>
+    </div>
+
+    <div class="one-control">
+      <mat-label>Виберіть кількість прикладів яка має бути згенерована</mat-label>
+      <mat-slider
+        formControlName="exerciseCount"
+        [thumbLabel]="true"
+        min="1"
+        max="20"
+        step="1">
+      </mat-slider>
+    </div>
+
+    <div class="one-control">
+      <mat-label>Виберіть кількість дій які має зробити учень</mat-label>
+      <mat-slider
+        formControlName="amountOfActions"
+        [thumbLabel]="true"
+        min="1"
+        max="20"
+        step="1">
+      </mat-slider>
+    </div>
+
+    <div class="one-control">
+      <mat-slide-toggle formControlName="allowLowerRankNumbers">Допускати менші числа</mat-slide-toggle>
+    </div>
+
+    <div class="buttons-row">
+      <button type="submit" mat-raised-button color="accent">Згенерувати</button>
+    </div>
+
+  </form>
+</mat-card>
