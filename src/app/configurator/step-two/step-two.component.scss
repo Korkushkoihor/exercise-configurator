@@ -45,22 +45,29 @@
     }
 
     .mat-table {
-      border: 1px solid rgba(0,0,0,.12);
+      border: 1px solid rgba(0, 0, 0, .12);
       border-bottom: none;
       border-right: none;
 
       .mat-header-cell {
         font-weight: bold;
         text-align: center;
-        border-right: 1px solid rgba(0,0,0,.12);
+        border-right: 1px solid rgba(0, 0, 0, .12);
         padding: 0 8px;
       }
 
+      .mat-row {
+        height: 24px;
+      }
+
       .mat-cell {
-        border-right: 1px solid rgba(0,0,0,.12);
+        border-right: 1px solid rgba(0, 0, 0, .12);
         text-align: end;
         white-space: nowrap;
         padding: 0 8px;
+        font-weight: 900;
+        color: #000;
+        font-size: 18px;
 
         .action-icon {
           font-size: 18px;
