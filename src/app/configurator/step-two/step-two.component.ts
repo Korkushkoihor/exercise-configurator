@@ -18,6 +18,19 @@ export class StepTwoComponent {
   public dataSource: any[] = [];
   public displayedColumns: string[] = [];
   private availableActions = ['+', '-'];
+  private colors = [
+    'rgba(233, 151, 121, 0.2)',
+    'rgba(164, 42, 42, 0.2)',
+    'rgba(255, 127, 1, 0.2)',
+    'rgba(255, 1, 2, 0.2)',
+    'rgba(254, 255, 0, 0.2)',
+    'rgba(7, 255, 0, 0.2)',
+    'rgba(37, 139, 33, 0.2)',
+    'rgba(10, 254, 255, 0.2)',
+    'rgba(79, 147, 205, 0.2)',
+    'rgba(20, 2, 255, 0.2)',
+    'rgba(148, 2, 211, 0.2)',
+  ];
 
   constructor() {
   }
@@ -96,10 +109,31 @@ export class StepTwoComponent {
 
     this.dataSource = new Array(this.config.amountOfActions);
 
-    for (let i = 0; i < this.config.amountOfActions; i++) {
+    for (let i = 0; i <= this.config.amountOfActions; i++) {
       this.dataSource[i] = {};
+      if (i !== this.config.amountOfActions) {
+        for (let j = 0; j < this.config.exerciseCount; j++) {
+          this.dataSource[i]['excs ' + (j + 1)] = exercisesArray[j].values[i];
+        }
+      } else {
+        for (let j = 0; j < this.config.exerciseCount; j++) {
+          this.dataSource[i]['excs ' + (j + 1)] = {};
+        }
+      }
+    }
+
+    const colorsTempArray = new Array(this.config.exerciseCount - 1);
+    colorsTempArray[0] = this.colors[this.getRandomIntInInterval(0, this.colors.length - 1)];
+    for (let j = 1; j < this.config.exerciseCount; j++) {
+      colorsTempArray[j] = this.colors[this.getRandomIntInInterval(0, this.colors.length - 1)];
+      while (colorsTempArray[j - 1] === colorsTempArray[j]) {
+        colorsTempArray[j] = this.colors[this.getRandomIntInInterval(0, this.colors.length - 1)];
+      }
+    }
+
+    for (let i = 0; i < this.dataSource.length; i++) {
       for (let j = 0; j < this.config.exerciseCount; j++) {
-        this.dataSource[i]['excs ' + (j + 1)] = exercisesArray[j].values[i];
+        this.dataSource[i]['excs ' + (1 + j)].color = colorsTempArray[j];
       }
     }
 

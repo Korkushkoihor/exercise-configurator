@@ -17,13 +17,15 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
+import {GroupByThreePipe} from '../pipes/group-by-three.pipe';
 
 
 @NgModule({
   declarations: [
     ConfiguratorComponent,
     StepOneComponent,
-    StepTwoComponent
+    StepTwoComponent,
+    GroupByThreePipe
   ],
   imports: [
     CommonModule,

@@ -59,6 +59,7 @@
       .mat-cell {
         border-right: 1px solid rgba(0,0,0,.12);
         text-align: end;
+        white-space: nowrap;
         padding: 0 8px;
 
         .action-icon {
