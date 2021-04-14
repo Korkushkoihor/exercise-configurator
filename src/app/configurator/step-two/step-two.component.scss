@@ -45,9 +45,12 @@
     }
 
     .mat-table {
-      border: 1px solid rgba(0, 0, 0, .12);
-      border-bottom: none;
-      border-right: none;
+
+      ::ng-deep tbody {
+        border: 1px solid rgba(0, 0, 0, .12);
+        border-bottom: none;
+        border-right: none;
+      }
 
       .mat-header-cell {
         font-weight: bold;
@@ -72,6 +75,11 @@
         .action-icon {
           font-size: 18px;
           margin-right: 4px;
+        }
+
+        .cell-body {
+          display: flex;
+          justify-content: flex-end;
         }
       }
     }

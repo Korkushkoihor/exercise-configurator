@@ -153,17 +153,17 @@ export class StepTwoComponent {
     s.type = 'text/javascript';
     s.innerHTML = `setTimeout(()=>{debugger; print(); close(); },3000)`;
     if (isTeacherTable) {
-      (newWin as any).document.write((this.teacherTable as any)._elementRef.nativeElement.outerHTML);
+      (newWin as any).document.write(this.teacherTable.nativeElement.outerHTML);
       (newWin as any).document.appendChild(s);
     } else {
-      (newWin as any).document.write((this.studentTable as any)._elementRef.nativeElement.outerHTML);
+      (newWin as any).document.write(this.studentTable.nativeElement.outerHTML);
       (newWin as any).document.appendChild(s);
     }
   }
 
   downloadImage(isTeacherTable: boolean): void {
     if (isTeacherTable) {
-      toPng((this.teacherTable as any)._elementRef.nativeElement)
+      toPng(this.teacherTable.nativeElement)
         .then((dataUrl) => {
           const link = document.createElement('a');
           link.download = `таблиця_вчителя_${this.config.exerciseCount}x.jpeg`;
@@ -171,7 +171,7 @@ export class StepTwoComponent {
           link.click();
         });
     } else {
-      toPng((this.studentTable as any)._elementRef.nativeElement)
+      toPng(this.studentTable.nativeElement)
         .then((dataUrl) => {
           const link = document.createElement('a');
           link.download = `таблиця_учня${this.config.exerciseCount}x.jpeg`;
@@ -182,7 +182,8 @@ export class StepTwoComponent {
   }
 
   private allowLowerNumber(allowed: boolean): boolean {
-    return !allowed ? false : this.getRandomIntInInterval(0, 1) === 0;
+    return allowed;
+    // return !allowed ? false : this.getRandomIntInInterval(0, 1) === 0;
   }
 
   private generateNumber(digitCount: number, maxValue: number = Math.pow(10, digitCount.toString().length) - 1): number {

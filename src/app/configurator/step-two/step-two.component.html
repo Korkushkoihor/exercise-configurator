@@ -16,20 +16,25 @@
   </mat-card-header>
   <mat-card-content>
     <div class="table-container">
-      <table mat-table [dataSource]="dataSource" #studentTable>
-        <!-- Position Column -->
-        <ng-container *ngFor="let col of displayedColumns">
-          <ng-container matColumnDef="{{col}}">
-            <td [style.background-color]="element[col]?.color" mat-cell *matCellDef="let element; let i = index;">
-              <span class="action-icon"
-                    [style.color]="element[col]?.neededAction === '+' ? 'green' : 'red'">{{element[col]?.neededAction}}</span>
-              {{ element[col]?.actionValue | groupByThree}}
-            </td>
-          </ng-container>
-        </ng-container>
 
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+      <div class="table-wrapper" #studentTable>
+        <table mat-table [dataSource]="dataSource">
+          <!-- Position Column -->
+          <ng-container *ngFor="let col of displayedColumns">
+            <ng-container matColumnDef="{{col}}">
+              <td [style.background-color]="element[col]?.color" mat-cell *matCellDef="let element; let i = index;">
+                <div class="cell-body">
+                  <span class="action-icon"
+                        [style.color]="element[col]?.neededAction === '+' ? 'green' : 'red'">{{element[col]?.neededAction}}</span>
+                  {{ element[col]?.actionValue | groupByThree}}
+                </div>
+              </td>
+            </ng-container>
+          </ng-container>
+
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
 
       <div class="actions-container">
         <h2>Таблиця для учнів - без результатів</h2>
@@ -46,21 +51,28 @@
       </div>
     </div>
     <div class="table-container">
-      <table mat-table [dataSource]="dataSource" #teacherTable>
-        <!-- Position Column -->
-        <ng-container *ngFor="let col of displayedColumns">
-          <ng-container matColumnDef="{{col}}">
-            <td [style.background-color]="element[col]?.color" mat-cell *matCellDef="let element; let i = index;">
-              <span class="action-icon"
-                    [style.color]="element[col]?.neededAction === '+' ? 'green' : 'red'">{{element[col]?.neededAction}}</span>
-              {{ element[col]?.actionValue | groupByThree}}
-              <br/>
-              <span style="color: green">{{i !== 0 ? (element[col]?.calculatedValue | groupByThree) : ''}}</span></td>
+      <div class="table-wrapper" #teacherTable>
+        <table mat-table [dataSource]="dataSource">
+          <!-- Position Column -->
+          <ng-container *ngFor="let col of displayedColumns">
+            <ng-container matColumnDef="{{col}}">
+              <td [style.background-color]="element[col]?.color" mat-cell *matCellDef="let element; let i = index;">
+                <div class="cell-body">
+                  <div class="action-icon"
+                       [style.color]="element[col]?.neededAction === '+' ? 'green' : 'red'">{{element[col]?.neededAction}}
+                  </div>
+                  {{ element[col]?.actionValue | groupByThree}}
+                </div>
+                <div class="cell-body">
+                  <span style="color: green">{{i !== 0 ? (element[col]?.calculatedValue | groupByThree) : ''}}</span>
+                </div>
+              </td>
+            </ng-container>
           </ng-container>
-        </ng-container>
 
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
 
       <div class="actions-container">
         <h2>Таблиця для вчителя - з результатами</h2>
