@@ -2,35 +2,38 @@
   <form [formGroup]="configureGroup" (submit)="submitGroup()">
     <div class="one-control">
       <mat-label>Виберіть максимально допустиму кількість цифр</mat-label>
-      <mat-slider
-        formControlName="maxNumbers"
-        [thumbLabel]="true"
-        min="1"
-        max="16"
-        step="1">
-      </mat-slider>
+
+      <mat-form-field appearance="legacy">
+        <mat-select formControlName="maxNumbers">
+          <mat-option *ngFor="let value of availableSelectValues" [value]="value">
+            {{value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
 
     <div class="one-control">
       <mat-label>Виберіть кількість прикладів яка має бути згенерована</mat-label>
-      <mat-slider
-        formControlName="exerciseCount"
-        [thumbLabel]="true"
-        min="1"
-        max="20"
-        step="1">
-      </mat-slider>
+
+      <mat-form-field appearance="legacy">
+        <mat-select formControlName="exerciseCount">
+          <mat-option *ngFor="let value of availableSelectValues" [value]="value">
+            {{value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
 
     <div class="one-control">
       <mat-label>Виберіть кількість дій які має зробити учень</mat-label>
-      <mat-slider
-        formControlName="amountOfActions"
-        [thumbLabel]="true"
-        min="1"
-        max="20"
-        step="1">
-      </mat-slider>
+
+      <mat-form-field appearance="legacy">
+        <mat-select formControlName="amountOfActions">
+          <mat-option *ngFor="let value of availableSelectValues" [value]="value">
+            {{value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
 
     <div class="one-control">

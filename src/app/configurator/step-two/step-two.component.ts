@@ -65,7 +65,7 @@ export class StepTwoComponent {
 
         if (!calculatedValue) {
           if (this.allowLowerNumber(this.config.allowLowerRankNumbers)) {
-            actionValue = this.generateNumber(this.getRandomIntInInterval(4 > this.config.maxNumbers ? 1 : 4, this.config.maxNumbers));
+            actionValue = this.generateNumber(this.getRandomIntInInterval(4 > this.config.maxNumbers ? 1 : this.config.maxNumbers - 3, this.config.maxNumbers));
           } else {
             actionValue = this.generateNumber(this.config.maxNumbers);
           }

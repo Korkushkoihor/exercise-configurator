@@ -18,6 +18,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {GroupByThreePipe} from '../pipes/group-by-three.pipe';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {GroupByThreePipe} from '../pipes/group-by-three.pipe';
     MatCardModule,
     MatSlideToggleModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ]
 })
 export class ConfiguratorModule {
